@@ -5,14 +5,14 @@
 // General colors
 @syntax-text-color:            @syntax-fg;
 @syntax-cursor-color:          @syntax-accent;
-@syntax-selection-color:       lighten(@syntax-background-color, 10%);
+@syntax-selection-color:       rgb(39, 44, 56);
 @syntax-selection-flash-color: @syntax-accent;
 @syntax-background-color:      @syntax-bg;
 
 // Guide colors
 @syntax-wrap-guide-color:          @syntax-guide;
 @syntax-indent-guide-color:        @syntax-guide;
-@syntax-invisible-character-color: @syntax-guide;
+@syntax-invisible-character-color: @syntax-bg;
 
 // For find and replace markers
 @syntax-result-marker-color:          fade(@syntax-accent, 24%);
@@ -25,10 +25,10 @@
 @syntax-gutter-background-color-selected: lighten(@syntax-bg, 2%);
 
 // Git colors - For git diff info. i.e. in the gutter
-@syntax-color-renamed:  hsl(208, 100%, 60%);
-@syntax-color-added:    hsl(150,  60%, 54%);
-@syntax-color-modified: hsl(40,   60%, 70%);
-@syntax-color-removed:  hsl(0,    70%, 60%);
+@syntax-color-renamed:  rgb(0, 125, 255);
+@syntax-color-added:    #2bda77;
+@syntax-color-modified: rgb(0, 125, 255);
+@syntax-color-removed:  hsl(0, 90%, 60%);
 
 // For language entity colors
 @syntax-color-variable:   @hue-5;
@@ -43,7 +43,6 @@
 @syntax-color-attribute:  @hue-6;
 @syntax-color-import:     @hue-3;
 @syntax-color-snippet:    @hue-4;
-
 
 // Custom Syntax Variables -----------------------------------
 // Don't use in packages

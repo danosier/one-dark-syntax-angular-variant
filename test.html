@@ -1,0 +1,85 @@
+<div class="col-md-12" ng-if="contactFormCtrl.showErrors && contactFormCtrl.contactForm.$invalid">
+  <div class="contact-form-error">
+    <h3>There was an error submitting your form</h3>
+    <ul>
+      <li>Name, email address, and message are required.</li>
+      <li>Phone number must be a valid U.S. number.</li>
+      <li>Company must be less than 64 characters.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="col-md-12" ng-if="contactFormCtrl.submitSuccessful">
+  <p>Thank you for your interest.</p>
+  <p>Expect to hear from me soon.</p>
+</div>
+
+<form id="contactForm" name="contactFormCtrl.contactForm" ng-submit="contactFormCtrl.submit()" ng-if="!contactFormCtrl.submitSuccessful" novalidate>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group has-feedback" ng-class="{'has-success': contactFormCtrl.contactForm.nameInput.$valid, 'has-error': contactFormCtrl.contactForm.nameInput.$invalid && contactFormCtrl.contactForm.nameInput.$dirty}">
+        <label for="nameInput" class="sr-only">Name</label>
+        <div class="input-group">
+          <div class="input-group-addon name-icon-padding">
+            <i class="fa fa-user fa-lg"></i>
+          </div>
+          <input name="nameInput" type="text" class="form-control" id="nameInput" placeholder="Name" required ng-model="contactFormCtrl.name">
+        </div>
+        <span>{{contactFormCtrl.name}}</span>
+        <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': contactFormCtrl.contactForm.nameInput.$valid, 'glyphicon-remove': contactFormCtrl.contactForm.nameInput.$invalid && contactFormCtrl.contactForm.nameInput.$dirty}"></span>
+      </div>
+      <div class="form-group has-feedback" ng-class="{'has-success': contactFormCtrl.contactForm.emailInput.$valid, 'has-error': contactFormCtrl.contactForm.emailInput.$invalid && (contactFormCtrl.contactForm.emailInput.$dirty || contactFormCtrl.showErrors)}">
+        <label for="emailInput" class="sr-only">Email address</label>
+        <div class="input-group">
+          <div class="input-group-addon">
+            <i class="fa fa-envelope-o fa-lg"></i>
+          </div>
+          <input name="emailInput" type="email" class="form-control" id="emailInput" placeholder="Email" required ng-model="contactFormCtrl.email">
+        </div>
+        <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': contactFormCtrl.contactForm.emailInput.$valid, 'glyphicon-remove': contactFormCtrl.contactForm.emailInput.$invalid && (contactFormCtrl.contactForm.emailInput.$dirty || contactFormCtrl.showErrors)}"></span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group has-feedback">
+        <label for="phoneInput" class="sr-only">Phone number</label>
+        <div class="input-group">
+          <div class="input-group-addon phone-icon-padding">
+            <i class="fa fa-phone fa-lg"></i>
+          </div>
+          <input name="phoneInput" type="text" class="form-control" id="phoneInput" placeholder="Phone" ng-model="contactFormCtrl.phoneNumber">
+        </div>
+        <span class="glyphicon form-control-feedback" id="phoneInput1"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <label for="companyInput" class="sr-only">Company</label>
+        <div class="input-group">
+          <div class="input-group-addon company-icon-padding">
+            <i class="fa fa-building-o fa-lg"></i>
+          </div>
+          <input name="companyInput" type="text" class="form-control" id="companyInput" placeholder="Company" value="">
+        </div>
+        <span class="glyphicon form-control-feedback" id="companyInput1"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <div class="form-group has-feedback">
+        <label for="messageInput" class="sr-only">Message</label>
+        <div class="input-group">
+          <div class="input-group-addon message-icon-padding">
+            <i class="fa fa-file-text-o fa-lg"></i>
+          </div>
+          <textarea name="messageInput" class="form-control" id="messageInput" placeholder="Message" required></textarea>
+        </div>
+        <span class="glyphicon form-control-feedback" id="messageInput1"></span>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <button id="sendButton" type="submit" name="submit" class="btn btn-info btn-lg btn-send pull-right">
+        <i class="fa fa-paper-plane fa-2x"></i>
+        <span class="sr-only"> Send</span>
+      </button>
+    </div>
+  </div>
+</form>

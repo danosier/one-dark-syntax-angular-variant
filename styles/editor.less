@@ -1,12 +1,12 @@
 
 // Editor styles (background, gutter, guides)
 
-atom-text-editor {
+atom-text-editor, atom-text-editor::shadow {
   background-color: @syntax-background-color;
   color: @syntax-text-color;
 
   .line.cursor-line {
-    background-color: @syntax-cursor-line;
+    background-color: fade(@syntax-cursor-line, 10%);
   }
 
   .invisible {
@@ -30,8 +30,30 @@ atom-text-editor {
     color: @syntax-invisible-character-color;
   }
 
-  .indent-guide {
-    color: @syntax-indent-guide-color;
+  span {
+    // .indent-guide:first-child {
+    //   border: none;
+    //   box-shadow: none;
+    // }
+
+    // .indent-guide:not(:first-child) {
+    .indent-guide {
+      display: inline-block;
+      box-shadow: none;
+      border-left: dotted 1px rgba(200, 200, 200, 0.3);
+      width: 15px;
+
+      &.invisible-character.eol {
+        width: 7px;
+      }
+    }
+
+    .js {
+
+      .indent-guide.invisible-character.eol {
+        width: 8px;
+      }
+    }
   }
 
   .wrap-guide {
@@ -58,35 +80,63 @@ atom-text-editor {
     .line-number {
       color: @syntax-gutter-text-color;
       -webkit-font-smoothing: antialiased;
+      opacity: 1;
 
       &.cursor-line {
-        color: @syntax-gutter-text-color-selected;
-        background-color: @syntax-gutter-background-color-selected;
+        color: @syntax-background-color;
+        background-color: fade(@syntax-gutter-text-color, 70%);
       }
-      &.cursor-line-no-selection {
-        background-color: transparent;
-      }
-
+      // &.cursor-line-no-selection {
+      //   background-color: transparent;
+      // }
       .icon-right {
         color: @syntax-text-color;
       }
+
+      &.foldable .icon-right {
+        visibility: visible;
+        color: @syntax-text-color;
+      }
+    }// end of line number
+
+    .git-line {
+
+      &-modified {
+        border-color: fade(@syntax-color-modified, 100%);
+
+        &.line-diff-modified {
+          background-color: @syntax-color-modified;
+        }
+      }// end of &-modified
+
+      &-added {
+
+        &.line-diff-added {
+          color: @syntax-background-color;
+        }
+      }
+    }// end of &.git-line
+
+    .git-line-removed {
+      border-bottom: dotted thin @syntax-color-removed;
     }
 
     &:not(.git-diff-icon) .line-number.git-line-removed {
       &.git-line-removed::before {
-        bottom: -3px;
+        //bottom: -3px;
+        border-left-color: @syntax-color-removed;
       }
       &::after {
-        content: "";
-        position: absolute;
-        left: 0px;
-        bottom: 0px;
-        width: 25px;
-        border-bottom: 1px dotted fade(@syntax-color-removed, 50%);
-        pointer-events: none;
+        // content: "";
+        // position: absolute;
+        // left: 0px;
+        // bottom: 0px;
+        // width: 25px;
+        // border-bottom: 1px dotted fade(@syntax-color-removed, 50%);
+        // pointer-events: none;
       }
     }
-  }
+  }// end of .gutter
 
   .gutter .line-number.folded,
   .gutter .line-number:after,

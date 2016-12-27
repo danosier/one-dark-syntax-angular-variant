@@ -1,14 +1,14 @@
 {
-  "name": "one-dark-syntax",
+  "name": "one-dark-angular-variant-syntax",
   "theme": "syntax",
-  "version": "1.6.0",
+  "version": "0.0.1",
   "description": "A dark syntax theme",
   "keywords": [
     "dark",
     "blue",
     "syntax"
   ],
-  "repository": "https://github.com/atom/one-dark-syntax",
+  "repository": "https://github.com/danosier/one-dark-syntax-angular-variant",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
