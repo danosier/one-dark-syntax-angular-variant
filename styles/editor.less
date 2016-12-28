@@ -85,6 +85,13 @@ atom-text-editor, atom-text-editor::shadow {
       &.cursor-line {
         color: @syntax-background-color;
         background-color: fade(@syntax-gutter-text-color, 70%);
+
+        &.foldable {
+
+          &.folded {
+            color: @syntax-background-color;
+          }
+        }
       }
       // &.cursor-line-no-selection {
       //   background-color: transparent;
@@ -93,9 +100,16 @@ atom-text-editor, atom-text-editor::shadow {
         color: @syntax-text-color;
       }
 
+      &.foldable {
+
+        &.folded {
+          color: @syntax-gutter-text-color;
+        }
+      }
+
       &.foldable .icon-right {
         visibility: visible;
-        color: @syntax-text-color;
+        color: @syntax-gutter-text-color;
       }
     }// end of line number
 
